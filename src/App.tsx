@@ -1,8 +1,8 @@
+import React from 'react';
+import { Stack } from '@mui/material';
 import { Route, Routes } from 'react-router';
-import './App.css';
 import Detail from './components/Detail';
 import TopRated from './components/TopRated';
-import { Stack } from '@mui/material';
 
 type AppRoot = {
   path: string,

@@ -12,7 +12,7 @@ type Movie = {
     overview: any
 }
 
-function TopRated() {
+function TopRated() : JSX.Element {
 
     const API_KEY = '92b418e837b833be308bbfb1fb2aca1e'
 

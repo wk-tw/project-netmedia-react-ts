@@ -10,6 +10,8 @@ Inspired by :
 
 3. Redux from https://redux-toolkit.js.org/usage/usage-with-typescript
 
+4. Test helper from https://blog.fildon.me/mocking-in-jest-with-typescript-and-react
+
 ## Implemented Features 
 
 1. Overview from top rated movies (page 1 only)
