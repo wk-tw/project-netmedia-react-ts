@@ -1,6 +1,6 @@
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from '@mui/material'
 import { Fragment } from 'react'
-import type { Cast } from './Detail'
+import type { Cast } from '../types/Cast'
 
 function CastCard(props: { cast: Cast }) {
 
@@ -10,13 +10,13 @@ function CastCard(props: { cast: Cast }) {
         <Fragment>
             <Card sx={{ width: 200, height: 400 }}>
                 <CardActionArea>
-                    <CardMedia
+                    {cast.profile_path && <CardMedia
                         component="img"
                         width="200"
                         height="300"
                         image={`https://image.tmdb.org/t/p/w200${cast.profile_path}`}
                         alt="image not found"
-                    />
+                    />}
                     <CardContent>
                         <Typography variant="body1" color="text.primary">
                             {cast.name}

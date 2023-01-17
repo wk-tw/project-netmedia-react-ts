@@ -1,42 +1,23 @@
-import axios from 'axios';
-import { Fragment, useEffect, useState } from 'react';
-import OverviewCard from './OverviewCard';
 import { Grid } from '@mui/material';
+import { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useFetchTopRated } from '../hooks/hooks';
+import { Movie } from '../types/Movie';
+import OverviewCard from './OverviewCard';
 
-type Movie = {
-    title: string
-    id: string,
-    release_date: Date,
-    poster_path: string,
-    overview: any
-}
+function TopRated(): JSX.Element {
 
-function TopRated() : JSX.Element {
+    const [page, setPage, movies, fetchTopRatedStatus, getTopRated] = useFetchTopRated()
 
-    const API_KEY = '92b418e837b833be308bbfb1fb2aca1e'
-
-    const [data, setData] = useState<Movie[]>([])
-
-    const fetchData = () => {
-        axios
-            .get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=1`)
-            .then(response => {
-                console.log(response)
-                setData(response.data.results)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }
-
-    useEffect(() => { fetchData() }, [])
+    useEffect(() => {
+        getTopRated()
+    }, [])
 
     return (
         <Fragment>
             <Grid container>
                 {
-                    data.map((movie: Movie, index) => (
+                    movies.map((movie: Movie, index: number) => (
                         <div key={index}>
                             <Grid item>
                                 <Link to={`/detail/${movie.id}`} style={{ textDecoration: 'none' }}>
@@ -51,7 +32,8 @@ function TopRated() : JSX.Element {
                     ))
                 }
             </Grid>
-        </Fragment>
+            <input value={page} onChange={(e) => setPage(e.target.valueAsNumber)}></input>
+        </Fragment >
     )
 }
 

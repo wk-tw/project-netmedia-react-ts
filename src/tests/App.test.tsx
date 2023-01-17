@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react"
 import { MemoryRouter } from 'react-router-dom'
-import App from "./App"
-import Detail from './components/Detail'
-import TopRated from './components/TopRated'
+import App from "../App"
+import Detail from '../components/Detail'
+import TopRated from '../components/TopRated'
 
-jest.mock('./components/TopRated')
-jest.mock('./components/Detail')
+jest.mock('../components/TopRated')
+jest.mock('../components/Detail')
 
 describe('testing App routes', () => {
 
