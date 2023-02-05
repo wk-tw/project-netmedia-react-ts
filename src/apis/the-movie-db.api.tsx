@@ -1,32 +1,47 @@
-import axios, { AxiosResponse } from "axios"
-import { Movie } from "../types/Movie"
-import { MovieCredit } from "../types/MovieCredit"
-import { MovieDetail } from "../types/MovieDetail"
+import axios, { AxiosResponse } from "axios";
+import { Movie } from "../types/Movie";
+import { MovieCredit } from "../types/MovieCredit";
+import { MovieDetail } from "../types/MovieDetail";
 
-const API_KEY = '92b418e837b833be308bbfb1fb2aca1e'
+const API_KEY = "92b418e837b833be308bbfb1fb2aca1e";
 
-const BASE_URL = 'https://api.themoviedb.org/3'
+const BASE_URL = "https://api.themoviedb.org/3";
 
-const BASE_URL_IMAGE = 'https://image.tmdb.org'
+const BASE_URL_IMAGE = "https://image.tmdb.org";
 
-const enum IMAGE_SIZE {
-    w200 = 'w200',
-    w500 = 'w500',
-    original = 'original'
+const enum ImageSize {
+  w200 = "w200",
+  w500 = "w500",
+  original = "original",
 }
 
-export async function fetchSingleMovie(id: string): Promise<AxiosResponse<MovieDetail>> {
-    return await axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+export async function fetchSingleMovie(
+  id: string,
+): Promise<AxiosResponse<MovieDetail>> {
+  return axios.get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`);
 }
 
-export async function fetchTopRated(page: number): Promise<AxiosResponse<{ results: Movie[] }>> {
-    return await axios.get(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&page=${page}`)
+export async function fetchTopRated(
+  page: number,
+): Promise<AxiosResponse<{ results: Movie[] }>> {
+  return axios.get(
+    `${BASE_URL}/movie/top_rated?api_key=${API_KEY}&page=${page}`,
+  );
 }
 
-export async function fetchSingleMovieCredit(id: string): Promise<AxiosResponse<MovieCredit>> {
-    return await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`)
+export async function fetchSingleMovieCredit(
+  id: string,
+): Promise<AxiosResponse<MovieCredit>> {
+  return axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}`,
+  );
 }
 
-export async function fetchImage(imageFileNameWithExtension: string, imageSize: IMAGE_SIZE = IMAGE_SIZE.w200) {
-    return await axios.get(`${BASE_URL_IMAGE}/t/p/${imageSize}${imageFileNameWithExtension}`)
+export async function fetchImage(
+  imageFileNameWithExtension: string,
+  imageSize: ImageSize = ImageSize.w200,
+) {
+  return axios.get(
+    `${BASE_URL_IMAGE}/t/p/${imageSize}${imageFileNameWithExtension}`,
+  );
 }
