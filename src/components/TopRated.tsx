@@ -1,58 +1,46 @@
-import axios from 'axios';
-import { Fragment, useEffect, useState } from 'react';
-import OverviewCard from './OverviewCard';
-import { Grid } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Grid } from "@mui/material";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useFetchTopRated } from "../hooks/hooks";
+import { type Movie } from "../types/Movie";
+import OverviewCard from "./OverviewCard";
 
-type Movie = {
-    title: string
-    id: string,
-    release_date: Date,
-    poster_path: string,
-    overview: any
-}
+function TopRated(): JSX.Element {
+  const [page, setPage, movies, , getTopRated] = useFetchTopRated();
 
-function TopRated() {
+  useEffect(() => {
+    getTopRated();
+  }, []);
 
-    const API_KEY = '92b418e837b833be308bbfb1fb2aca1e'
-
-    const [data, setData] = useState<Movie[]>([])
-
-    const fetchData = () => {
-        axios
-            .get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&page=1`)
-            .then(response => {
-                console.log(response)
-                setData(response.data.results)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }
-
-    useEffect(() => { fetchData() }, [])
-
-    return (
-        <Fragment>
-            <Grid container>
-                {
-                    data.map((movie: Movie, index) => (
-                        <div key={index}>
-                            <Grid item>
-                                <Link to={`/detail/${movie.id}`} style={{ textDecoration: 'none' }}>
-                                    <OverviewCard
-                                        title={movie.title}
-                                        releaseDate={movie.release_date}
-                                        overview={movie.overview}
-                                        image={'https://image.tmdb.org/t/p/w500' + movie.poster_path} />
-                                </Link>
-                            </Grid>
-                        </div>
-                    ))
-                }
+  return (
+    <>
+      <Grid container>
+        {movies.map((movie: Movie) => (
+          <div key={movie.id}>
+            <Grid item>
+              <Link
+                to={`/detail/${movie.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <OverviewCard
+                  title={movie.title}
+                  releaseDate={movie.release_date}
+                  overview={movie.overview}
+                  image={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                />
+              </Link>
             </Grid>
-        </Fragment>
-    )
+          </div>
+        ))}
+      </Grid>
+      <input
+        value={page}
+        onChange={(e) => {
+          setPage(e.target.valueAsNumber);
+        }}
+      />
+    </>
+  );
 }
 
-export default TopRated
+export default TopRated;

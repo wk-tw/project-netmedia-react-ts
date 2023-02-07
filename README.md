@@ -10,6 +10,12 @@ Inspired by :
 
 3. Redux from https://redux-toolkit.js.org/usage/usage-with-typescript
 
+4. Test helper from https://blog.fildon.me/mocking-in-jest-with-typescript-and-react
+
+5. Package structure from https://dev.to/djamaile/how-i-structure-my-react-ts-applications-160g
+
+6. React hook tests from https://dominicarrojado.com/posts/how-to-integrate-with-a-rest-api-using-react-hooks-and-typescript-with-tests/
+
 ## Implemented Features 
 
 1. Overview from top rated movies (page 1 only)
