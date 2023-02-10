@@ -16,6 +16,8 @@ Inspired by :
 
 6. React hook tests from https://dominicarrojado.com/posts/how-to-integrate-with-a-rest-api-using-react-hooks-and-typescript-with-tests/
 
+7. Best practices with React Redux https://medium.com/js-imaginea/best-practices-with-react-and-redux-application-1e94a6f214a0
+
 ## Implemented Features 
 
 1. Overview from top rated movies (page 1 only)

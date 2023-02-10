@@ -3,7 +3,7 @@ import { Movie } from "../types/Movie";
 import { MovieCredit } from "../types/MovieCredit";
 import { MovieDetail } from "../types/MovieDetail";
 
-const API_KEY = "92b418e837b833be308bbfb1fb2aca1e";
+const API_KEY = "f1385c64d950783daf4b51c41fc24cb0";
 
 const BASE_URL = "https://api.themoviedb.org/3";
 

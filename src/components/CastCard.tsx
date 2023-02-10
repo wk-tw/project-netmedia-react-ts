@@ -5,9 +5,10 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import React from "react";
 import type { Cast } from "../types/Cast";
 
-function CastCard(props: { cast: Cast }) {
+function CastCard(props: { cast: Cast }): React.ReactElement {
   const { cast } = props;
 
   return (

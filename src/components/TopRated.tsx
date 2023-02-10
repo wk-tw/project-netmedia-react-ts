@@ -1,11 +1,11 @@
 import { Grid } from "@mui/material";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useFetchTopRated } from "../hooks/hooks";
 import { type Movie } from "../types/Movie";
 import OverviewCard from "./OverviewCard";
 
-function TopRated(): JSX.Element {
+function TopRated(): React.ReactElement {
   const [page, setPage, movies, , getTopRated] = useFetchTopRated();
 
   useEffect(() => {

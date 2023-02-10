@@ -6,13 +6,14 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
+import React from "react";
 
 function OverviewCard(props: {
   title: string;
   releaseDate: Date;
   overview: string;
   image: string;
-}) {
+}): React.ReactElement {
   const { title, releaseDate, overview, image } = props;
 
   return (
