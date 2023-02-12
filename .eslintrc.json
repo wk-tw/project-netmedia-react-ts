@@ -35,7 +35,14 @@
           "**/*.test.tsx",
           "**/setupTests.ts"
         ],
-        "bundledDependencies": false // Due to firebase/app, firebase/firestore, firebase/auth
+        "bundledDependencies": false // Due to firebase/app, firebase/firestore, firebase/auth.
+      }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"] // Redux reducer functions have side effects.
       }
     ]
   }
