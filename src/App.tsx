@@ -2,8 +2,6 @@ import { Stack } from "@mui/material";
 import React from "react";
 import { Route, Routes } from "react-router";
 import "./App.css";
-import Detail from "./components/Detail";
-import TopRated from "./components/TopRated";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 
@@ -13,11 +11,7 @@ type AppRoot = {
 };
 
 function App(): React.ReactElement {
-  const appRoutes: AppRoot[] = [
-    { path: "/", element: <div /> },
-    { path: "/toprated", element: <TopRated /> },
-    { path: "/detail/:id", element: <Detail /> },
-  ];
+  const appRoutes: AppRoot[] = [{ path: "/", element: <div /> }];
 
   const user = null;
 
