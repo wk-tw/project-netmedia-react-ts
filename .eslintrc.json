@@ -30,7 +30,12 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["**/*.test.ts", "**/*.test.tsx", "**/setupTests.ts"]
+        "devDependencies": [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/setupTests.ts"
+        ],
+        "bundledDependencies": false // Due to firebase/app, firebase/firestore, firebase/auth
       }
     ]
   }

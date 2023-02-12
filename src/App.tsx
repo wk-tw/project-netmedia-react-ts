@@ -1,7 +1,8 @@
 import { Stack } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router";
 import "./App.css";
+import { auth } from "./firebase";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 
@@ -14,6 +15,16 @@ function App(): React.ReactElement {
   const appRoutes: AppRoot[] = [{ path: "/", element: <div /> }];
 
   const user = null;
+
+  useEffect(() => {
+    return auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        console.log(userAuth);
+      } else {
+        // Logged out
+      }
+    });
+  }, []);
 
   return (
     <div className="app">
