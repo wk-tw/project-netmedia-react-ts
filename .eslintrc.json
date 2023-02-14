@@ -29,7 +29,21 @@
     "testing-library/render-result-naming-convention": ["off"],
     "import/no-extraneous-dependencies": [
       "error",
-      { "devDependencies": ["**/*.test.ts", "**/*.test.tsx", "**/setupTests.ts"] }
+      {
+        "devDependencies": [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/setupTests.ts"
+        ],
+        "bundledDependencies": false // Due to firebase/app, firebase/firestore, firebase/auth.
+      }
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"] // Redux reducer functions have side effects.
+      }
     ]
   }
 }
