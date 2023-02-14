@@ -1,4 +1,3 @@
-import { Stack } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router";
@@ -6,6 +5,7 @@ import "./App.css";
 import { auth } from "./firebase";
 import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import { login, logout, selectUser } from "./redux/userSlice";
 
 type AppRoot = {
@@ -14,7 +14,10 @@ type AppRoot = {
 };
 
 function App(): React.ReactElement {
-  const appRoutes: AppRoot[] = [{ path: "/", element: <div /> }];
+  const appRoutes: AppRoot[] = [
+    { path: "/", element: <HomePage /> },
+    { path: "/profile", element: <ProfilePage /> },
+  ];
   const dispatch = useDispatch();
 
   const user = useSelector(selectUser);
@@ -29,22 +32,22 @@ function App(): React.ReactElement {
           }),
         );
       } else {
-        dispatch(logout);
+        dispatch(logout());
       }
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app">
-      {!user ? <LoginPage /> : <HomePage />}
-
-      <Stack direction="column" spacing={{ xs: 1, sm: 2, md: 4 }}>
+      {!user ? (
+        <LoginPage />
+      ) : (
         <Routes>
           {appRoutes.map((item) => (
             <Route key={item.path} path={item.path} element={item.element} />
           ))}
         </Routes>
-      </Stack>
+      )}
     </div>
   );
 }
